@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Valerie!</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Georgia, serif;
+    background: linear-gradient(135deg, #ffc6dc, #d9c5ff, #ffe4ef);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    color: #713c68;
+}
+
+.container {
+    width: 90%;
+    max-width: 430px;
+    text-align: center;
+    padding: 30px 22px;
+    background: rgba(255,255,255,0.55);
+    backdrop-filter: blur(12px);
+    border-radius: 25px;
+    box-shadow: 0 10px 35px #a85d8b44;
+    margin: 25px 0;
+}
+
+.heart {
+    font-size: 55px;
+    animation: beat 1.2s infinite;
+}
+
+@keyframes beat {
+    50% { transform: scale(1.2); }
+}
+
+h1 {
+    font-size: 30px;
+    margin: 15px 0;
+    color: #b34e87;
+}
+
+.name {
+    font-size: 23px;
+    font-weight: bold;
+    color: #8b4caa;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+button {
+    border: none;
+    padding: 13px 25px;
+    margin-top: 22px;
+    border-radius: 30px;
+    background: linear-gradient(90deg, #ed80b3, #a77be8);
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+#message {
+    display: none;
+    margin-top: 25px;
+    animation: fade 1.5s ease;
+}
+
+@keyframes fade {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.decor {
+    font-size: 25px;
+    margin: 18px 0;
+}
+
+footer {
+    margin-top: 25px;
+    font-size: 12px;
+    opacity: 0.7;
+}
+
+#confetti {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+</style>
+</head>
+
+<body>
+
+<div id="confetti"></div>
+
+<div class="container">
+
+    <div class="heart">🎂</div>
+
+    <h1>Happy Birthday!</h1>
+
+    <div class="name">
+        Valerie Alexsia Rohadi
+    </div>
+
+    <div class="decor">🌷 🎀 🦋 🌷</div>
+
+    <p>
+        Today is your special day!
+        Semoga hari ini dipenuhi dengan
+        kebahagiaan, senyuman, dan hal-hal
+        indah yang selalu kamu harapkan.
+    </p>
+
+    <button onclick="openMessage()">
+        Open Your Surprise 💌
+    </button>
+
+    <div id="message">
+
+        <h2>Dear Valerie 💗</h2>
+
+        <br>
+
+        <p>
+        Selamat ulang tahun, Valerie!
+        Semoga bertambahnya usia membawa
+        banyak kebahagiaan, pengalaman baru,
+        dan cerita indah dalam hidupmu.
+        </p>
+
+        <br>
+
+        <p>
+        Semoga semua harapan dan impianmu
+        satu per satu bisa terwujud.
+        Jangan pernah berhenti menjadi
+        pribadi yang baik dan selalu
+        menemukan alasan untuk tersenyum.
+        </p>
+
+        <br>
+
+        <p>
+        May your life be filled with
+        endless happiness, love, and
+        beautiful memories.
+        </p>
+
+        <br>
+
+        <h3>Once again, Happy Birthday! 🎂</h3>
+
+        <div class="decor">
+        💗 🌸 🦋 🎀 🌸 💗
+        </div>
+
+    </div>
+
+    <footer>
+        Made with love ♡
+    </footer>
+
+</div>
+
+<script>
+function openMessage() {
+    document.getElementById("message").style.display = "block";
+
+    document.querySelector("button").style.display = "none";
+
+    for(let i = 0; i < 70; i++) {
+        let confetti = document.createElement("div");
+
+        confetti.innerHTML = ["💗","🌸","✨","🎀","💕"][
+            Math.floor(Math.random()*5)
+        ];
+
+        confetti.style.position = "absolute";
+        confetti.style.left = Math.random()*100 + "%";
+        confetti.style.top = "-30px";
+        confetti.style.fontSize = "20px";
+
+        document.getElementById("confetti")
+        .appendChild(confetti);
+
+        let duration = 2000 + Math.random()*3000;
+
+        confetti.animate([
+            { transform: "translateY(0) rotate(0deg)", opacity: 1 },
+            { transform: "translateY(110vh) rotate(500deg)", opacity: 0 }
+        ], {
+            duration: duration,
+            easing: "linear"
+        });
+
+        setTimeout(() => confetti.remove(), duration);
+    }
+}
+</script>
+
+</body>
+</html>
